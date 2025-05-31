@@ -1,0 +1,26 @@
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#5C3B1E" stroke-width="4" stroke-linejoin="round">
+    
+    <!-- Telhado em forma de triângulo com cor laranja queimado -->
+    <path d="M20 70 L75 20 L130 70" fill="#E27C3E"/>
+
+    <!-- Corpo da casinha com base mais larga (pentágono estilizado) -->
+    <path d="M35 70 
+             L35 120 
+             L115 120 
+             L115 70 
+             L75 40 
+             Z" 
+          fill="#FEF3D2"/>
+
+    <!-- Contorno extra para reforçar o estilo desenhado -->
+    <path d="M35 70 
+             L35 120 
+             L115 120 
+             L115 70 
+             L75 40 
+             Z" 
+          fill="none" stroke="#5C3B1E"/>
+
+  </g>
+</svg>

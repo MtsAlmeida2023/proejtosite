@@ -1,0 +1,95 @@
+{% extends "global/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h2 class="text-center mt-3">BUSCAR CÃES</h2>
+
+<div class="row mt-3 text-end me-4">
+    <div>
+        <button type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#searchBackdrop" aria-controls="searchBackdrop" data-bs-backdrop="static" aria-controls="searchBackdrop">
+            <i class="fas fa-magnifying-glass fa-2x mb-2" style="color: #533E1A;"></i>
+        </button>
+    </div>
+</div>
+
+
+{% if petlist %}
+<div class="row mt-3 align-items-center">
+        {% include 'pets/partials/petcard_holder.html' %}
+</div>
+
+<div class="row mt-3 text-center">
+    <span class="form-login-title" id="num_results_id" style="display:inline;">{{ num_results }}{% if num_results > 1 %} registros encontrados{% else %} registro encontrado{% endif %}</span>
+</div>
+{% else %}
+    <div class="row mt-3">
+        <span id="num_results_id" class="form-title">Nenhum registro foi encontrado</span>
+    </div>
+{% endif %}
+
+
+
+<div class="offcanvas offcanvas-start bg-light-caramel" data-bs-backdrop="static" tabindex="-1" id="searchBackdrop" aria-labelledby="searchBackdropLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="searchBackdropLabel">PESQUISAR CÃO</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form id="search_pet" method='POST' action= {% url 'pet:search_respost'%}>
+            {% csrf_token %}
+            
+                <div class="row mt-4 mb-4 pt-2 pb-4 rounded shadow">
+                    
+                    <label for="name" class="form-label register-form-title">NOME</label>
+                    <input type="text" id="search_name" name="name" class="form-control text-center form-field-lg field-onchange" placeholder="Nome do cão">
+                </div>
+        
+            <div class="row mt-4 mb-4 pt-2 pb-4 rounded shadow">
+                <label class="form-label register-form-title">SEXO</label>
+                <div class="form-check form-check-inline custom-radio mt-2">
+                    <div class="form-check-inline">
+                        <input type="radio" class="form-check-input ms-3 me-2 field-onchange" name="sex" id="search_sex_m" value="M">
+                        <label class="form-check-label" for="search_sex_m">Macho</label>
+                    </div>
+                    
+                    <div class="form-check-inline">
+                        <input type="radio" class="form-check-input ms-3 me-2 field-onchange" name="sex" id="search_sex_f" value="F">
+                        <label class="form-check-label" for="search_sex_f">Fêmea</label>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row mt-4 mb-4 pt-2 pb-4 rounded shadow justify-content-center">
+                <label for="sector" class="form-label register-form-title">SETOR</label>
+                <select id="sector" name="sector" class="form-select text-center field-onchange w-50">
+                    <option value="">---</option>
+                    {% for sector in sectors %}
+                        <option value="{{ sector.id }}">{{ sector.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="row mt-4 mb-4 pt-2 pb-4 rounded shadow justify-content-center">
+                <label for="aptitude" class="form-label register-form-title">ADOÇÃO</label>
+                <select id="aptitude" name="aptitude" class="form-select text-center field-onchange w-50">
+                    <option value="">---</option>
+                    {% for value, aptitude in aptitudes %}    
+                    <option value="{{ value }}">{{ aptitude }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        
+            <div class="row mt-4 mb-4 pt-2 pb-4 rounded shadow justify-content-center">
+                <button type="submit" class="btn btn-primary mb-3 mt-3 me-3 btn-login   w-25" id="btn_search" disabled>PESQUISAR</button>
+            </div>
+        </form>
+    </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script src= "{% static 'pets/js/search.js' %}"></script>
+{% endblock %}

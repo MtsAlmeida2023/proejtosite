@@ -1,0 +1,18 @@
+<form method="POST" action="{% url 'pet:sector_update' sector.id %}">
+    {% csrf_token %} 
+    <td></td>
+    <td class="text-center">
+        <input text="text" name="name" id="name" class="form-control text-center field-table-sector" value="{{ sector.name }}" required>
+    </td>
+    <td class="text-center">    
+        <select name="type" class="form-select text-center field-table-type" required>
+            <option value="I" {% if sector.type == 'I' %}selected{% endif %}>Individual</option>
+            <option value="C" {% if sector.type == 'C' %}selected{% endif %}>Coletivo</option>
+        </select>
+    </td>
+    <td class="text-center">
+        <button type="submit" class="btn btn-table-submit"><i class="fa-solid fa-floppy-disk" title="Salvar"></i></button>
+        <a data-bs-toggle= "collapse" data-bs-target="#collapse_edit_sector{{sector.id}}" class="btn btn-table-submit" role="button" aria-expanded="false" aria-controls="Editar setor" title="Voltar">
+        <i class="fa-solid fa-xmark"></i></a>
+    </td>
+</form>

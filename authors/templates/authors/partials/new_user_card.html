@@ -1,0 +1,33 @@
+<!-- FORMULÁRIO RETRÁTIL PARA REGISTRAR NOVO USUÁRIO-->
+<form action="{% url 'authors:register_create' %}" method="POST">
+{% csrf_token %} 
+        
+<!--DIVIDINDO CAMPOS EM COLUNAS-->
+    
+    {% for field in form %}
+
+        {% if forloop.counter0|divisibleby:2 %} <div class="row mt-3">{% endif %}
+
+        <div class="col-12 col-md-6 text-center">
+            <label for="{{ field.id_for_label }}" class="form-label register-form-title">{{ field.label }}:</label>
+            {{ field }}
+            
+            <div class="container text-start mx-auto w-75">
+                {% if field.help_text %}
+                  <span class="help-text"> {{ field.help_text }}</span>
+                {% endif %}
+                
+            </div>
+        </div>
+                    
+        {% if forloop.counter|divisibleby:2 or forloop.last %}</div>{% endif %}
+        
+    {% endfor %}
+    <div class="row mt-3">
+    <!-- BOTÃO DE REGISTRAR CENTRALIZADO-->
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary mb-3 mt-3 btn-login" id="btn_register">REGISTRAR</button>
+        </div>
+    </div>
+</form>
+  

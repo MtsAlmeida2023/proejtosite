@@ -1,0 +1,22 @@
+{% extends "global\base.html" %}
+
+
+{% block content %}
+
+    {% if request.user.is_authenticated%}
+        <h2 class="text-center mt-3">CÃES REGISTRADOS</h2>
+    {% else %}
+        <h2 class="text-center mt-3">CÃES PARA ADOÇÃO</h2>
+    {% endif %}
+
+    {% include "pets/partials/petcard_holder.html" %}
+
+    {% if request.user.is_authenticated%}
+        <div class="row text-center mt-3">
+            <div>
+                <a href={% url 'pet:panel' %} role="button" class="btn btn-primary ms-3 me-3 mb-3 mt-3 btn-login" id="btn_voltar">VOLTAR</a>
+            </div>
+        </div>
+    {% endif %}
+    
+{% endblock content %}

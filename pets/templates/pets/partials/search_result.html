@@ -1,0 +1,26 @@
+<table class="text-center">            
+    <thead>
+        <tr class="tr-head">
+            <th scope="col">NOME</th>
+            <th scope="col">SEXO</th>
+            <th scope="col">SETOR</th>
+            <th scope="col">ADOÇÃO</th>
+            <th scope="col">AÇÕES</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for result in results %}
+            <tr class="tr-sector">
+                <td>{{ result.name }}</td>
+                <td>{{ result.get_sex_display }}</td>
+                <td>{{ result.sector }}</td>
+                <td>{{ result.get_aptitude_display }}</td>
+                <td>
+                    
+                    <a href = {% url 'pet:pet_view' result.id %} class="btn" role="button">
+                        <i class="fa-solid fa-pen-to-square"></i></a>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

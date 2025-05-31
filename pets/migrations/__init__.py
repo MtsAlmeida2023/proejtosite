@@ -1,0 +1,1 @@
+"""arquivo de migracoes de base de dados, referente a o ORM DO DJANGO"""

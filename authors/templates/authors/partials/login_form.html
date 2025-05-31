@@ -1,0 +1,20 @@
+<form action="{{ form_action }}" method="POST">
+
+  {% csrf_token %}
+
+    <div class="input-group mb-3 mx-auto w-75">
+      <span class="input-group-text"><i class="fa-solid fa-paw"></i></span>
+      {{ form.username }}
+    </div>
+          
+    <div class="input-group mb-3 mx-auto w-75">
+      <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+      {{ form.password }}
+    </div>
+      
+    <div class="justify-content-md-center mb-3">
+      <button type="submit" class="btn btn-primary btn-login rounded shadow mx-auto">Entrar</button>
+    </div>
+      
+</form>  
+  

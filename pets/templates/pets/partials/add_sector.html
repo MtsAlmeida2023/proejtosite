@@ -1,0 +1,27 @@
+<!-- TODO: Trocar um botão por um ícone?-->
+<div class="row mt-3">
+    <form id="add_sector" method="POST" action="{% url 'pet:sector_create'%}">
+    {% csrf_token %}     
+    
+        <div class="row mt-3 g-3 align-items-center">    
+            
+            <!--NOME DO SETOR-->
+            <div class="col-12 col-md-6 text center">
+                <label for="{{ form.name.id_for_label }}" class="form-label register-form-title">NOME DO SETOR:</label>
+                {{ form.name }}
+            </div>
+
+            <!--TIPO DO SETOR: COLETIVO OU INDIVIDUAL-->
+            <div class="col-12 col-md-3 text-center">
+                <label for="{{ form.type.id_for_label }}" class="form-label register-form-title">TIPO DO SETOR:</label>
+                {{ form.type }}
+            </div>
+
+            <!-- BOTÃO SUBMIT-->
+            <div class="col-12 col-md-3 text-center">
+                <button type="submit" class="btn btn-sector">Adicionar Setor</button>       
+                <button type="button" class="btn btn-sector ms-4" data-bs-toggle="collapse" data-bs-target="#collapse_new_sector" aria-expanded="false" aria-controls="collapse_new_sector">Cancelar</button>
+            </div>
+        </div>
+    </form>    
+</div>

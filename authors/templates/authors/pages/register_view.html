@@ -1,0 +1,18 @@
+{% extends "global/base.html" %}
+
+{% include "pets/partials/head.html" %}
+
+{% include "pets/partials/header.html" %}
+
+{% load static %}
+
+{% block content %}
+
+  {% include "authors/partials/new_user_card.html" %}
+      
+  <div class="spacing-row"></div>
+  
+  {% include 'pets/partials/message_toast.html' %}
+  {% include 'global/partials/form_toast.html'%}
+
+{% endblock %}

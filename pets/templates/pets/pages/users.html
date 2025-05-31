@@ -1,0 +1,32 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+
+  <h2 class="text-center mt-3">GERENCIAR USUÁRIOS</h2>
+
+  <!--LINHA PARA CADASTRAR NOVO USUÁRIO, COLLAPSABLE-->
+  <div class="row mt-3"> 
+
+    <!-- BOTÃO PARA CADASTRAR NOVO USUÁRIO -->
+    <a class="btn btn-collapse btn-lg text-start mx-4" data-bs-toggle="collapse" href="#collapse_new_user" role="button" aria-expanded="false" aria-controls="collapseExample"> CADASTRAR NOVO USUÁRIO</a>
+  </div>
+    
+  <div class="row mt-3">    
+    {% include "pets/partials/new_user_card.html" %}
+  </div>
+      
+  <div class="spacing-row"></div>
+  <!--LINHA PARA MOSTRAR USUÁRIOS CADASTRADOS-->
+  
+  <div class="row mt-3">
+    <!-- BOTÃO PARA EXIBIR USUÁRIOS -->
+    <a class="btn btn-collapse btn-collapse-view btn-lg text-start mx-4 mb-4" data-bs-toggle="collapse" href="#collapse_show_users" role="button" aria-expanded="false" aria-controls="exibir usuários">VISUALIZAR USUÁRIOS</a>  
+  </div>
+
+  {% include "pets/partials/show_users_card.html" %}
+
+{% endblock %}
+    
+    
+    
+    

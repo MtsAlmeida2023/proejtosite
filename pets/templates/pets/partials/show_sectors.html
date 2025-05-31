@@ -1,0 +1,61 @@
+<div class="row mt-3">
+    <div class="col-12 text-end align-items-center">
+        <span class="form-title">Total de residentes nos setores selecionados: </span><span id="totalChecked" class="total-residents">0</span>
+    </div>
+</div>
+<div class="row mt-3 mx-2">    
+    <table class="text-center">
+            
+        <thead>
+            <tr class="tr-head">
+                <th scope="col">Selecionar</th>
+                <th scope="col">Setor</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            {% for sector in sectors %}
+                <tr class="tr-sector">
+                    <td class="text-center"><input type="checkbox" name="sector_id{{sector.id}}" id="sector_id{{sector.id}}" value="{{ sector.resident_number }}" onChange="countResidents(this, {{sector.resident_number}})"></td>
+                    <td class="text-center">{{ sector.name }}</td>
+                    <td class="text-center">{{ sector.get_type_display }}</td>
+                    
+                    <!-- COLUNA DE AÇÕES-->
+                    <td class="text-center">
+            
+                        <a data-bs-toggle= "collapse" data-bs-target="#collapse_edit_sector{{sector.id}}" class="btn" role="button" aria-expanded="false" aria-controls="collapse_edit_sector{{sector.id}}" title="Editar setor">
+                            <i class="fa-solid fa-pen-to-square"></i></a>
+                        
+                        <!-- FORM PARA ENVIAR UM POST PARA EXCLUSÃO DO SETOR -->
+                        
+                        <form method="POST" action="{% url 'pet:sector_delete' sector.id %}" id="remove_sector{{sector.id}}" style="display:inline;" title="Excluir setor">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-table-submit"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                    
+                        <a data-bs-toggle="modal" data-bs-target="#modal_show_residents{{sector.id}}" class="btn" role="button" aria-expanded="false" aria-controls="modal_show_residents{{sector.id}}" title="Exibir residentes do setor">
+                        <i class="fa-solid fa-dog"></i></a>
+                    </td>
+                </tr>
+                
+                <!--LINHA RETRÁTIL COM O FORMULÁRIO DE ALTERAÇÃO DO SETOR-->
+                <tr class="collapse tr-row-even" id="collapse_edit_sector{{sector.id}}">  
+                    {% include "pets/partials/edit_sector.html" %}
+                </tr>                
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- INICIA UM NOVO LOOP PARA CONSTRUIR UM MODAL-->
+{% for sector in sectors %}
+
+    {% include "pets/partials/show_resident_modal.html" %}
+
+{% endfor %}
+
+
+
+

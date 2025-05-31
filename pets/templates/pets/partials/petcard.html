@@ -1,0 +1,30 @@
+{% load static %}
+
+{% if request.user.is_authenticated%}
+  <a href= {% url 'pet:pet_view' pet.id %} class="link-pet-card">
+{% endif %}
+  <div class="card h-100 pet-card justify-content-center d-flex flex-md-row flex-column">
+    <div class="row g-0 h-100 align-items-stretch">
+      <div class="col-md-6 col-12 p-0">
+        <img src="{{ pet.front_photo.url }}" class="img-fluid rounded-start h-100 object-fit-cover" alt="Foto frontal de {{ pet.name }}">
+      </div>
+          <div class="col-md-6 col-12 {{ pet.bg_color }} p-3 d-flex flex-column justify-content-center">
+        <h2 class="pet-name text-truncate">{{ pet.name }}</h2>
+        <ul class="pet-info list-unstyled">
+          <li>{{ pet.get_sex_display }}</li>
+          <li>Castrado</li>
+          <li>Vacinado</li>
+          <hr>
+          <li><strong>nasc:</strong> {{ pet.birth_month_abbr }} {{ pet.birth|date:"Y"}}</li>
+          <li><strong>porte:</strong> {{ pet.get_size_display }}</li>
+          {% if pet.aptitude == 'IN' %}
+            <hr>
+            <li><strong style="font-size:1rem;">NÃO APTO À ADOÇÃO</strong></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% if request.user.is_authenticated%}
+  </a>
+{% endif %}

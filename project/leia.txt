@@ -1,0 +1,2 @@
+Este pasta e o coracao do projeto,onde ficara salvo todas as 
+configuracoes do django e interacoes com o site

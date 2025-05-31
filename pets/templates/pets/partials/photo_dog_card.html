@@ -1,0 +1,57 @@
+{% load static%}
+
+<div class="row">
+  <!-- FOTO FRONTAL-->
+  <div class="col-md-4 text-center">
+              
+    <div class="preview-container justify-content-center d-flex flex-column align-items-center">
+      {% if mode == 'update' %}
+        <img id="frontPreview" src="{{ pet.front_photo.url }}" alt="Prévia da foto frontal" class="img-fluid" style="max-width: 200px; max-height: 200px;">
+      {% else %}
+        <img id="frontPreview" src="{% static 'pets/img/placeholder_front_photo.png' %}" alt="Prévia da foto frontal" class="img-fluid" style="max-width: 200px; max-height: 200px;">
+      {% endif %}
+    </div>
+      
+    <div class="mb-3 justify-content-center d-flex flex-column align-items-center">
+      <label for="frontPhoto" class="form-label">Foto Frontal</label>
+      {{ form.front_photo }}
+    </div>
+    
+  </div>
+          
+  <!--FOTO LATERAL-->
+  <div class="col-md-4 text-center">
+              
+    <div class="preview-container justify-content-center d-flex flex-column align-items-center">
+      {% if form.instance.side_photo and form.instance.side_photo.url %}
+        <img id="sidePreview" src="{{ pet.side_photo.url}}" alt="Prévia da foto lateral" class="img-fluid" style="max-width: 200px; max-height: 200px;">
+      {% else %}
+        <img id="sidePreview" src="{% static 'pets/img/placeholder_side_photo.png' %}" alt="Prévia da foto lateral" class="img-fluid" style="max-width: 200px; max-height: 200px;">
+      {% endif %}
+    </div>
+                      
+    <div class="mb-3 justify-content-center d-flex flex-column align-items-center">
+      <label for="sidePhoto" class="form-label">Foto Lateral</label>
+      <input class="form-control w-75 justify-content-center" type="file" id="sidePhoto" name="sidePhoto" accept="image/*" onchange="previewImage(event, 'sidePreview')">
+    </div>
+    
+  </div>
+          
+  <!--FOTO DO PORTE-->
+  <div class="col-md-4 text-center">
+              
+    <div class="preview-container justify-content-center d-flex flex-column align-items-center">    
+      {% if form.instance.size_photo and form.instance.size_photo.url %}
+        <img id="sidePreview" src="{{ pet.size_photo.url}}" alt="Prévia da foto do porte" class="img-fluid" style="max-width: 200px; max-height: 200px;">
+      {% else %}         
+        <img id="sizePreview" src="{% static 'pets/img/placeholder_size_photo.png' %}" alt="Prévia da foto do porte" class="img-fluid" style="max-width: 200px; max-height: 200px;">
+      {% endif %}
+    </div>
+                    
+    <div class="mb-3 justify-content-center d-flex flex-column align-items-center">
+      <label for="sizePhoto" class="form-label">Foto do Porte</label>
+      <input class="form-control w-75" type="file" id="sizePhoto" name="sizePhoto" accept="image/*" onchange="previewImage(event, 'sizePreview')">
+    </div>
+
+  </div>
+</div>

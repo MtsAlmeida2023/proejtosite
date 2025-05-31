@@ -1,0 +1,20 @@
+{% if form.errors %}
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast show mb-2" role="alert" aria-live="assertive" aria-atomic="true">
+    
+        {% for field in form %}
+            {% if field.errors %}
+                <div class="toast-header">
+                    <i class="fa-solid fa-circle-xmark fa-2x alert-failure" style="color:red;"></i>
+                    <strong class="ms-2 me-auto">CÃOTROLE</strong>
+                    <small>Erro</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    <b>{{field.label}}</b> : {{ field.errors }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

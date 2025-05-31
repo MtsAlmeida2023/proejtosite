@@ -1,0 +1,18 @@
+<div class="modal fade" id="modal_show_residents{{sector.id}}" tabindex="-1"aria-labelledby="modalLabel{{ sector.id }}" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg-light-caramel">
+      <div class="modal-header" style="border-bottom: 1.5pt solid   #B26E39;">
+        <h5 class="modal-title modal-residents" id="modalLabel{{ sector.id }}">Residentes do Setor <b>{{ sector.name }}</b></h5>    
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+
+      <div class="modal-body">
+        {% include "pets/partials/show_residents.html" %}
+      </div>
+    </div>
+  </div>
+</div>
+
+      

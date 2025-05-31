@@ -1,0 +1,56 @@
+{% extends "global/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<h2 class="text-center mt-3">GERENCIAR SETORES</h2>
+
+<!--LINHA PARA ADICIONAR SETOR-->
+<div class="row"> 
+
+<!-- BOTÃO PARA CADASTRAR NOVO SETOR, ATIVA FORMULÁRIO RETRÁTIL -->
+    <a class="btn btn-collapse btn-collapse-view btn-lg mx-4 text-start" data-bs-toggle="collapse" href="#collapse_new_sector" role="button" aria-expanded="false" aria-controls="collpasenewsector">CADASTRAR NOVO SETOR</a>
+</div>
+
+<!-- FORMULÁRIO RETRÁTIL PARA REGISTRAR NOVO SETOR-->
+<div class="row mt-2">    
+    <div class="collapse" id="collapse_new_sector">
+        <div class="card card-body user-card mx-3">
+            {% include "pets/partials/add_sector.html" %}
+        </div>
+    </div>
+</div>
+  
+<!--LINHA PARA MOSTRAR USUÁRIOS CADASTRADOS-->
+  
+<div class="row mt-4">
+    
+    <!-- BOTÃO PARA EXIBIR SETORES -->
+    <a class="btn btn-collapse btn-collapse-view btn-lg text-start mx-4" data-bs-toggle="collapse" href="#collapse_show_sectors" role="button" aria-expanded="false" aria-controls="exibir usuários">VISUALIZAR SETORES</a>  
+</div>
+
+<div class="row mt-2">    
+    <div class="collapse" id="collapse_show_sectors">
+        <div class="card card-body user-card mx-3">
+            {% include "pets/partials/show_sectors.html" %}
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="text-center">
+        <a href={% url 'pet:panel' %} role="button" class="btn btn-primary ms-3 me-3 mb-3 mt-3 btn-login" id="btn_voltar">VOLTAR</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+<script src= "{% static 'pets/js/sector.js' %}"></script>
+{% endblock %}
+
+
+    
+    

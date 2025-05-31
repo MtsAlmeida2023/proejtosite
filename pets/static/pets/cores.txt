@@ -1,0 +1,5 @@
+Fundo	Quase branco	#FFF8F3
+Títulos	Marrom médio	#5C3B1E
+Texto normal	Marrom escuro	#3B2B20
+Botões primários	Caramelo vivo + texto branco	#E27C3E + #FFFFFF
+Hover botão	#F4A66D

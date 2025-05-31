@@ -1,0 +1,39 @@
+{% load dict_extras%}
+
+{% with sector_residents|get_item:sector as residents %}
+    {% if residents %}
+        <table class="w-100">
+            <thead>
+                <tr class="text-center table tr-sector">
+                    <th scope="col">NOME</th>
+                    <th scope="col">ÚLTIMA VACINAÇÃO</th>
+                    <th scope="col">ÚLTIMA VERMIFUGAÇÃO</th>
+                </tr>
+            </thead>
+        
+        <tbody>
+            {% for resident in residents %}
+                <tr class="tr-sector">
+                    <td class="text-center">{{ resident.name }}</td>
+                    <td class="text-center"> {{ resident.vaccine_month_abbr}} {{resident.vaccine|date:"Y"}}</td>
+                        
+    
+                    <td class="text-center">{{ resident.vermifuge_month_abbr}} {{resident.vermifuge|date:"Y"}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan=2 class="text-center"><h4>TOTAL DE RESIDENTES</h4></td>
+                <td class="text-center"><h4>{{ sector.resident_number }}</h4> </td>
+        </tbody>
+    </table>
+    
+    {% else %}
+        <span class="form-title">Não há residentes nesse setor.</span>
+    {% endif %}
+
+{% endwith %}
+
+
+
+
+        
